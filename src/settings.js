@@ -2,8 +2,7 @@ module.exports = {
   /**
    * @description 网站标题
    */
-  // title: '个人软件测试',
-  title: 'EL-ADMIN',
+  title: '基础框架',
   /**
    * @description 是否显示 tagsView
    */
@@ -23,7 +22,7 @@ module.exports = {
   /**
    * @description token key
    */
-  TokenKey: 'EL-ADMIN-TOEKN',
+  TokenKey: 'BASE-TOEKN',
   /**
    * @description 请求超时时间，毫秒（默认2分钟）
    */
@@ -39,9 +38,9 @@ module.exports = {
   /**
    * 底部文字，支持html语法
    */
-  footerTxt: '© 2019 Zheng Jie <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
+  footerTxt: '© 2018-2022 Zheng Jie <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>',
   /**
    * 备案号
    */
-  caseNumber: '浙ICP备18005431号-6'
+  caseNumber: ''
 }
