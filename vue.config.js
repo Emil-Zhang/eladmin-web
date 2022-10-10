@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
-const FileManagerPlugin = require('filemanager-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -13,8 +13,9 @@ const port = 8013 // 端口配置
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
   // hash 模式下可使用
-  publicPath: process.env.NODE_ENV === 'development' ? '/' : '/demo/',
-  outputDir: 'demo',
+  // publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
+  publicPath: '/',
+  outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
@@ -53,19 +54,12 @@ module.exports = {
       }
     },
     plugins: [
-      new FileManagerPlugin({
-        onEnd: {
-          mkdir: ['./dist'],
-          delete: [
-            './dist.zip'
-          ],
-          archive: [
-            {
-              source: './dist',
-              destination: './dist.zip'
-            }
-          ]
-        }
+      // https://www.ydyno.com/archives/1260.html 使用gzip解压缩静态文件
+      new CompressionPlugin({
+        test: /\.(js|css|html)?$/i, // 压缩文件格式
+        filename: '[path].gz[query]', // 压缩后的文件名
+        algorithm: 'gzip', // 使用gzip压缩
+        minRatio: 0.8 // 压缩率小于1才会压缩
       })
     ]
   },
